@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\MenuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,5 +31,14 @@ Route::controller(CategoryController::class)->group(function(){
     Route::get('delete/{id}','delete')->name('category.delete');
 });
 });
-
+Route::prefix('menu')->group(function(){
+    Route::controller(MenuController::class)->group(function(){
+        Route::get('create','create')->name('menu.create');
+        Route::post('store','store')->name('menu.store');
+        Route::get('list','list');
+        Route::get('edit/{id}','edit')->name('menu.edit');
+        Route::post('update/{id}','update')->name('menu.update');
+        Route::get('delete/{id}','delete')->name('menu.delete');
+    });
+    });
 });

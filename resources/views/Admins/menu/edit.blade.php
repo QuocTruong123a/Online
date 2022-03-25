@@ -1,5 +1,6 @@
-@extends('Admin.Main')
-@section('content')
+@extends('Admins.Main')
+@section('Content')
+<div class="content-wrapper">
 <div class="card card-primary">
               <div class="card-header">
                 <h3 class="card-title">Sửa Menu</h3>
@@ -32,4 +33,5 @@
                 </div>
               </form>
             </div>
+</div>
 @endsection
