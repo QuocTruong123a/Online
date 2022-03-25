@@ -8,10 +8,7 @@ class Recusive {
     public function __construct($data)
     {
         $this->data = $data;
-
     }
-
-
     public  function categoryRecusive($parentId, $id = 0, $text = '')
     {
         foreach ($this->data as $value) {
@@ -25,7 +22,6 @@ class Recusive {
                 $this->categoryRecusive($parentId,$value['id'], $text. '--');
             }
         }
-
         return $this->htmlSlelect;
 
     }
