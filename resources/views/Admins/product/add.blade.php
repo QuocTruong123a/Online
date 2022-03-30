@@ -1,9 +1,10 @@
-@extends('Admin.Main')
+@extends('Admins.Main')
 @section('css')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 
-@section('content')
+@section('Content')
+<div class="content-wrapper">
 <div class="card card-primary">
               <div class="card-header">
                 <h3 class="card-title">Thêm sản phẩm</h3>
@@ -25,42 +26,51 @@
                   </div>
                
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Ảnh sản phẩm</label>
+                    <label for="exampleInputEmail1">Ảnh dai dien</label>
                     <input type="file" class="form-control-file" name="feature_image_path" >
                   </div>
                 
-                  
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Ảnh chi tiet</label>
+                    <input type="file" class="form-control-file" name="image_path[]" >
+                  </div>
                   <div class="form-group">
                     <label for="menu">Danh mục cha</label>
                     <select name="category_id" class="form-control select2_init">
                     <option value="">Danh Mục Cha </option>
-                    {!!$htmlOption!!}
-                      
+                      {!!$htmlOption!!}
+                      <div class="form-group">
                 </select>
                 </div>
                 <div class="form-group">
-                
+                <label for="menu">Nhap the cho san pham</label>
+                <select name="tags[]" class="form-control tags_select_choose" multiple="multiple">
+                </select>
                 </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Mô tả</label>
                     <textarea row="3" class="form-control "id="mytextarea" name="content"></textarea>
                   </div>
-                 
                 </div>
-                <!-- /.card-body -->
-
+                </div> 
+                <!-- /.card-body --> 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Thêm mới</button>
                 </div>
               </form>
             </div>
+</div>
 @endsection
 @section('js')
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script >
     $(function(){
-        
+      $(".tags_select_choose").select2({
+         tags:true,
+         tokenSeparators:[',','']
+  
+   });
         $(".select2_init").select2({
             placeholder: "chọn danh mục",
     allowClear: true

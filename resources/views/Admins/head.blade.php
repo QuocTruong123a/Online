@@ -22,3 +22,4 @@
   <link rel="stylesheet" href="AdminLTE/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="AdminLTE/plugins/summernote/summernote-bs4.min.css">
+  @yield('css')
