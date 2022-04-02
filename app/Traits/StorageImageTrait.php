@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+
 trait StorageImageTrait
 {
     public function storageTraitUpload($request, $fieldName, $foderName)

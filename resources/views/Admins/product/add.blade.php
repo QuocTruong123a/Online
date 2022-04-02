@@ -32,7 +32,7 @@
                 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Ảnh chi tiet</label>
-                    <input type="file" class="form-control-file" name="image_path[]" >
+                    <input type="file" multiple="multiple"  class="form-control-file" name="image_path[]" >
                   </div>
                   <div class="form-group">
                     <label for="menu">Danh mục cha</label>
@@ -68,7 +68,7 @@
     $(function(){
       $(".tags_select_choose").select2({
          tags:true,
-         tokenSeparators:[',','']
+         tokenSeparators:[',']
   
    });
         $(".select2_init").select2({

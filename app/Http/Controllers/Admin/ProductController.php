@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductTag;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Traits\StorageImageTrait;
 use Exception;
+use App\Models\ProductImage;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
@@ -18,10 +21,16 @@ class ProductController extends Controller
     use StorageImageTrait;
     private $category;
     private $product;
-    public function __construct(Category $category, Product $product)
+    private $productImage;
+    private $tag;
+    private $productTag;
+    public function __construct(Category $category, Product $product, ProductImage $productImage,Tag $tag,ProductTag $productTag)
     {
         $this -> category = $category;
         $this -> product = $product;
+        $this -> productImage = $productImage;
+        $this -> tag = $tag;
+        $this -> productTag = $productTag;
     }
     public function getCategory($parent_id){
         $data = $this -> category -> all();
@@ -40,6 +49,7 @@ class ProductController extends Controller
 
     //them san pham
     public function store(Request $request){
+        
         $this->validate($request, [
             'name' => 'required',  
         ],[
@@ -61,7 +71,23 @@ class ProductController extends Controller
         }
          
           $product = $this ->product -> create($dataUploadCreate);
-          dd($product);
+        if($request -> hasfile('image_path')){
+            foreach($request -> image_path as $fileItem){
+                $dataProductImage = $this -> storageTraitUploadMutiple($fileItem,'product');
+                $product->images()->create([
+                    'image_path' =>$dataProductImage['file_path']
+                  
+                ]);
+            }
+        
+    
+        }
+           foreach($request -> tags as $tagItem){
+               $tagInstance = $this->tag->firstOrCreate(['name'=>$tagItem]);
+               $tagIds[]=$tagInstance ->id;
+           }
+           $product -> tags()->attach($tagIds);
+           return redirect('admin/product/create');
       }
       public function edit($id){
           $product = $this -> product -> find($id);

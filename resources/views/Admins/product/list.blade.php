@@ -1,13 +1,14 @@
-@extends('Admin.Main')
+@extends('Admins.Main')
 
-@section('content')
+@section('Content')
 @section('css')
-<link rel="stylesheet" href="public/Admin/css/add.css"/>
+<link rel="stylesheet" href="AdminLTE/css/add.css"/>
 @endsection
 @section('js')
-<script  src="public/Admin/js/add.js"></script>
+<script  src="AdminLTE/js/add.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
+<div class="content-wrapper">
 <div class="content"> 
                 <div class="row"> 
                 <div class="col-md-12"> 
@@ -31,9 +32,9 @@
                                     <th scope="row">{{$products -> id}}</th>
                                     <td>{{$products -> name}}</td>
                                     <td>{{number_format($products -> price)}}</td>
-                                    <td><img class="produtct_image_150 " src="public{{$products -> feature_image_path}}" alt=""></td>   
-                                    <td>{{$products->category->name }}</td>
-                                    <td>  
+                                    <td><img class="produtct_image_150 " src="{{URL::asset(''.$products -> feature_image_path)}}" alt=""></td>   
+                                    <td></td>
+                                    <td> 
                                            <a href="{{route('product.edit',['id' => $products -> id])}}"
                                                class="btn btn-default">Edit</a> 
                                             <a href=""
@@ -50,5 +51,5 @@
                 </div>
             </div>
         </div>
-             
+</div>      
 @endsection
