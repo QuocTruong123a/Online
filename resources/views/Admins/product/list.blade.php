@@ -32,8 +32,8 @@
                                     <th scope="row">{{$products -> id}}</th>
                                     <td>{{$products -> name}}</td>
                                     <td>{{number_format($products -> price)}}</td>
-                                    <td><img class="produtct_image_150 " src="{{URL::asset(''.$products -> feature_image_path)}}" alt=""></td>   
-                                    <td></td>
+                                    <td><img class="produtct_image_150 " src="{{$products -> feature_image_path}}" alt=""/></td>   
+                                    <td>{{$products->category->name }}</td>
                                     <td> 
                                            <a href="{{route('product.edit',['id' => $products -> id])}}"
                                                class="btn btn-default">Edit</a> 

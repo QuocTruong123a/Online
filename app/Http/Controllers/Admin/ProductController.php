@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\ProductTag;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
+use App\Models\ProductTag; 
 use App\Traits\StorageImageTrait;
 use Exception;
 use App\Models\ProductImage;
@@ -92,7 +90,7 @@ class ProductController extends Controller
       public function edit($id){
           $product = $this -> product -> find($id);
           $htmlOption = $this -> getCategory($product -> category_id);
-          return view('admin.product.edit',compact('htmlOption','product'));
+          return view('Admins.product.edit',compact('htmlOption','product'));
       }
       // sua san pham
       public function update(Request $request,$id){
@@ -100,7 +98,6 @@ class ProductController extends Controller
             'name' => $request -> name,
             'price' => $request -> price,
             'content' => $request -> content,
-            'user_id'=>  $request->id,
             'category_id' => $request -> category_id
         ];
         $dataUpload = $this ->storageTraitUpload($request,'feature_image_path','product');
@@ -109,8 +106,28 @@ class ProductController extends Controller
             $dataUploadproduct['feature_image_name']=$dataUpload['file_name'];
         }
         
-        $product = $this ->product ->find($id)-> update($dataUploadproduct);
-       
+        $this ->product ->find($id)-> update($dataUploadproduct);
+        $product = $this -> product-> find($id);
+        if($request -> hasfile('image_path')){
+            $this ->productImage->where('product_id',$id)->delete();
+            foreach($request -> image_path as $fileItem){
+                $dataProductImage = $this -> storageTraitUploadMutiple($fileItem,'product');
+                $product->images()->create([
+                    'image_path' =>$dataProductImage['file_path']
+                  
+                ]);
+            }
+        
+    
+        }
+        if(!empty($request -> tags)){
+            foreach($request -> tags as $tagItem){
+                $tagInstance = $this->tag->firstOrCreate(['name'=>$tagItem]);
+                $tagIds[]=$tagInstance ->id;
+            }
+        }
+           
+           $product -> tags()->sync($tagIds);
          
         return redirect('admin/product/list');
       }

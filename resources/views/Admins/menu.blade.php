@@ -76,6 +76,31 @@
               
             </ul>
           </li>
+           <!-- Slider -->
+           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-bars"></i>
+              <p>
+                Slider
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{asset('/admin/slider/create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm Slider</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/admin/slider/list')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh Sách Slider</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
           <!-- Thành viên -->
            <li class="nav-item">
             <a href="#" class="nav-link">

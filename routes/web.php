@@ -3,8 +3,9 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\MenuController;
-
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SliderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,14 +44,24 @@ Route::prefix('menu')->group(function(){
         Route::get('delete/{id}','delete')->name('menu.delete');
     });
     });
-    Route::prefix('product')->group(function(){
-        Route::controller(ProductController::class)->group(function(){
-            Route::get('create','create')->name('product.create');
-            Route::post('store','store')->name('product.store');
-            Route::get('list','list');
-            Route::get('edit/{id}','edit')->name('product.edit');
-            Route::post('update/{id}','update')->name('product.update');
-            Route::get('delete/{id}','delete')->name('product.delete');
+Route::prefix('product')->group(function(){
+    Route::controller(ProductController::class)->group(function(){
+        Route::get('create','create')->name('product.create');
+        Route::post('store','store')->name('product.store');
+        Route::get('list','list');
+        Route::get('edit/{id}','edit')->name('product.edit');
+        Route::post('update/{id}','update')->name('product.update');
+        Route::get('delete/{id}','delete')->name('product.delete');
+        });
+        });
+Route::prefix('slider')->group(function(){
+    Route::controller(SliderController::class)->group(function(){
+        Route::get('create','create')->name('slider.create');
+        Route::post('store','store')->name('slider.store');
+        Route::get('list','list');
+        Route::get('edit/{id}','edit')->name('slider.edit');
+        Route::post('update/{id}','update')->name('slider.update');
+        Route::get('delete/{id}','delete')->name('slider.delete');
         });
         });
 });
