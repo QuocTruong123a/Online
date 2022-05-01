@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Traits;
-
+use Exception;
 use Illuminate\Support\Facades\Log;
-
+use App\Models\Slider;
 trait DeleteModelTrait {
     public function deleteModelTrait($id, $model)
     {
@@ -14,7 +14,7 @@ trait DeleteModelTrait {
                 'message' => 'success'
             ], 200);
 
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             Log::error('Message: ' . $exception->getMessage() . ' --- Line : ' . $exception->getLine());
             return response()->json([
                 'code' => 500,

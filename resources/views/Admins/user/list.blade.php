@@ -1,7 +1,7 @@
-@extends('Admin.Main')
+@extends('Admins.Main')
 
-@section('content')
-
+@section('Content')
+<div class="content-wrapper">
 <div class="content">
            
                 <div class="row"> 
@@ -44,5 +44,5 @@
                 </div>
             </div>
         </div>
-             
+</div>    
 @endsection

@@ -122,9 +122,30 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh Sách thành viên</p>
                 </a>
-              </li>
-              
-            </ul>
+              </li> 
           </li>
         </ul>
+         <!-- Setting -->
+         <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa fa-cog"></i>
+              <p>
+                Setting
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{asset('/admin/setting/create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm Setting</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/admin/setting/list')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh Sách Setting</p>
+                </a>
+              </li>
+            </ul>
       </nav>

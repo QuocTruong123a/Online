@@ -19,29 +19,31 @@
                             <thead>        
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Tên Sản Phẩm</th>
+                                <th scope="col">Tên Slider</th>
                                 <th scope="col">Mô tả</th>
                                 <th scope="col">Hình Ảnh</th> 
                             </tr>
                             </thead>
-                            <tbody>     
+                            <tbody>  
+                                @foreach($slider as $sliders)   
                                 <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td><img class="produtct_image_150 " src="" alt=""/></td>   
-                                    <td></td>
+                                    <th scope="row">{{$sliders -> id}}</th>
+                                    <td>{{$sliders -> name}}</td>
+                                    <td>{{$sliders -> description}}</td>
+                                    <td><img class="produtct_image_150 " src="{{$sliders -> image_path}}" alt=""/></td>   
+                                   
                                     <td> 
-                                         <a href=""
-                                               class="btn btn-default">Edit</a>  
-                                        <a href=""
-                                            data-url=""
+                                    <a href="{{route('slider.edit',['id' => $sliders -> id])}}"
+                                               class="btn btn-default">Edit</a> 
+                                            <a href=""
+                                            data-url="{{route('slider.delete',['id' => $sliders -> id])}}"
                                                class="btn btn-danger action_delete">Delete</a> 
                                     </td>
-                                </tr> 
+                                </tr>
+                                @endforeach 
                             </tbody>
                         </table>
-                       
+                        {{$slider -> links('layout.paginationlinks')}}
                     </div>
                 
                 </div>
