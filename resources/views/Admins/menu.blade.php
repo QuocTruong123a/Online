@@ -148,4 +148,46 @@
                 </a>
               </li>
             </ul>
+            <!-- Danh sach chuc nang -->
+           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-address-card"></i>
+              <p>
+                 Chức năng
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{asset('/admin/role/create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm chức năng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/admin/role/list')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> danh sách chức năng</p>
+                </a>
+              </li> 
+          </li>
+        </ul>
+           <!-- permission -->
+           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-address-card"></i>
+              <p>
+              permission
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{asset('/admin/permission/create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm permission</p>
+                </a>
+              </li>
+          </li>
+        </ul>
       </nav>

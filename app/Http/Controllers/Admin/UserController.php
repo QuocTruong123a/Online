@@ -51,4 +51,9 @@ class UserController extends Controller
         $user ->roles()->sync($request ->role_id);
         return redirect('admin/user/list');
     }
+    public function delete($id){
+        $this -> user ->find($id) -> delete();
+        
+        return redirect('admin/user/list') ;
+    }
 }

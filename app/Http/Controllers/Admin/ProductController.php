@@ -75,12 +75,10 @@ class ProductController extends Controller
             foreach($request -> image_path as $fileItem){
                 $dataProductImage = $this -> storageTraitUploadMutiple($fileItem,'product');
                 $product->images()->create([
-                    'image_path' =>$dataProductImage['file_path']
-                  
+                    'image_path' =>$dataProductImage['file_path'] 
                 ]);
             }
-        
-    
+         
         }
            foreach($request -> tags as $tagItem){
                $tagInstance = $this->tag->firstOrCreate(['name'=>$tagItem]);
@@ -122,14 +120,16 @@ class ProductController extends Controller
         
     
         }
+        $tagIds=[];
         if(!empty($request -> tags)){
             foreach($request -> tags as $tagItem){
                 $tagInstance = $this->tag->firstOrCreate(['name'=>$tagItem]);
                 $tagIds[]=$tagInstance ->id;
             }
+            
         }
+        $product -> tags()->sync($tagIds);
            
-           $product -> tags()->sync($tagIds);
          
         return redirect('admin/product/list');
       }

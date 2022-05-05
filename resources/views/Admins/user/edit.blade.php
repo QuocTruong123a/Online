@@ -25,7 +25,7 @@
                   
                   <div class="form-group">
                     <label for="exampleInputEmail1">Mật khẩu</label>
-                    <input type="password" value="{{$user ->password}}" class="form-control " disabled="" name="password"  id="changePassword" placeholder="Nhập mật khẩu">
+                    <input type="password" value="" class="form-control "  name="password"  id="changePassword" placeholder="Nhập mật khẩu">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Chọn vai trò</label>
